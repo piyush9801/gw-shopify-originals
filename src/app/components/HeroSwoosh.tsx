@@ -6,11 +6,13 @@
 type Props = {
   className?: string;
   fill?: string;
+  style?: React.CSSProperties;
 };
 
 export function HeroSwoosh({
   className = "",
   fill = "#F5F3EE",
+  style,
 }: Props) {
   return (
     <svg
@@ -18,6 +20,7 @@ export function HeroSwoosh({
       viewBox="0 0 1531 960"
       preserveAspectRatio="xMidYMid meet"
       className={`pointer-events-none select-none ${className}`}
+      style={style}
     >
       {/* Main swoosh */}
       <path

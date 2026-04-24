@@ -1,24 +1,37 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import { HeroSwoosh } from "./HeroSwoosh";
 import { bbagleyHero } from "./bbagleyImages";
+import { HeroTuner, loadHeroTune } from "./HeroTuner";
 
 export function HeroSection() {
+  const [tune, setTune] = useState(loadHeroTune);
+
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-end overflow-hidden pb-16 bg-[#E8E6E0]">
       {/* Full-bleed photography — bbagley 3142 (client-chosen front) */}
       <img
         src={bbagleyHero}
         alt="GREENWRLD upcycled fashion"
-        className="absolute inset-0 w-full h-full object-cover object-[50%_45%]"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: `${tune.heroObjectX}% ${tune.heroObjectY}%` }}
       />
 
       {/* Brand swoosh + sparkles around the model */}
-      <HeroSwoosh className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 w-[55vw] max-w-[640px] h-auto opacity-90 drop-shadow-[0_2px_14px_rgba(0,0,0,0.3)] z-[5]" />
+      <HeroSwoosh
+        className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto drop-shadow-[0_2px_14px_rgba(0,0,0,0.3)] z-[5]"
+        style={{
+          top: `${tune.swooshTop}%`,
+          width: `${tune.swooshWidth}vw`,
+          maxWidth: `${tune.swooshMaxWidth}px`,
+          opacity: tune.swooshOpacity / 100,
+        }}
+      />
 
       {/* Top gradient — makes nav links readable over the cream-collage top */}
       <div className="absolute inset-x-0 top-0 h-[160px] bg-gradient-to-b from-black/55 via-black/20 to-transparent pointer-events-none z-[15]" />
 
-{/* Soft fade at the bottom so the CTA reads on both cream and forest backgrounds */}
+      {/* Soft fade at the bottom so the CTA reads on both cream and forest backgrounds */}
       <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent via-black/30 to-black/70" />
 
       <div className="relative z-10 text-center px-6 flex flex-col items-center">
@@ -35,6 +48,8 @@ export function HeroSection() {
           Shop Now
         </Link>
       </div>
+
+      <HeroTuner tune={tune} onChange={setTune} />
     </section>
   );
 }
