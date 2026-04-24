@@ -8,7 +8,7 @@ import { bbagley, bbagleyStoryExtras } from "./bbagleyImages";
 /* ─── Torn-paper cutout collage assets (generated via Gemini) ─── */
 import storyBreak1 from "../../assets/brand-shoot/story/story-break-1.png";
 import storyBreak2 from "../../assets/brand-shoot/story/story-break-2.png";
-import brandStudioPortrait from "../../assets/editorial/brand-studio-portrait.png";
+import { bbagleyStoryHero } from "./bbagleyImages";
 import { HeroSwoosh } from "./HeroSwoosh";
 import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
@@ -85,7 +85,7 @@ function Hero() {
         {/* Hero image with swoosh overlay */}
         <div className="relative max-h-[65vh] overflow-hidden">
           <ImageWithFallback
-            src={brandStudioPortrait}
+            src={bbagleyStoryHero}
             alt="The Wrld — brand portrait"
             className="block w-full h-full max-h-[65vh] object-cover"
             style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}

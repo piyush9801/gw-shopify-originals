@@ -4,7 +4,7 @@
 // article page — short stories can all share StoryArticle.tsx.
 import brandStudioPortrait from "../../assets/editorial/brand-studio-portrait.png";
 import nyfwRedRunway from "../../assets/editorial/nyfw-red-runway.png";
-import laEditorialGroup from "../../assets/editorial/la-editorial-group.png";
+import { bbagleyStoryHero } from "./bbagleyImages";
 
 export type Story = {
   slug: string;
@@ -29,7 +29,7 @@ export const stories: Story[] = [
     excerpt:
       "Greenwrld was built around the idea that clothing doesn't need to be newly manufactured to feel new.",
     date: "2024",
-    tile: brandStudioPortrait,
+    tile: bbagleyStoryHero,
     kind: "full",
   },
   {
@@ -56,9 +56,9 @@ export const stories: Story[] = [
     excerpt:
       "A sustainable showcase at Goodwill LA, built around reworked Nike archive pieces and Billie Eilish's vision.",
     date: "Fall 2023",
-    tile: laEditorialGroup,
+    tile: brandStudioPortrait,
     kind: "article",
-    featureImage: laEditorialGroup,
+    featureImage: brandStudioPortrait,
     body: [
       "Goodwill has been part of our sourcing story since day one. So when the opportunity came to showcase reworked pieces alongside Nike and Billie Eilish — at Goodwill in Los Angeles — it felt like everything converging at once.",
       "We built a capsule from Nike archive outerwear, deconstructing and rebuilding each piece by hand. The activation paired the finished garments with the source materials they came from, side by side.",
