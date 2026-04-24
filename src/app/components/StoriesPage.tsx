@@ -21,6 +21,17 @@ export function StoriesPage() {
             to={storyHref(featuredStory.slug, featuredStory.kind)}
             className="group block"
           >
+            <div className="mb-8 lg:mb-12 text-center max-w-[720px] mx-auto">
+              <p className="font-['Optima',sans-serif] text-[11px] tracking-[4px] uppercase text-[#525F47]/60 mb-3">
+                Featured · {featuredStory.chapter}
+              </p>
+              <h2 className="font-['Optima',sans-serif] text-[28px] lg:text-[40px] tracking-[4px] lg:tracking-[6px] uppercase text-[#1A1A1A] leading-[1.15] mb-4">
+                {featuredStory.title}
+              </h2>
+              <p className="font-['Inter',sans-serif] text-[14px] lg:text-[15px] leading-[1.85] text-[#2C2C2C]/70">
+                {featuredStory.excerpt}
+              </p>
+            </div>
             <div className="relative overflow-hidden">
               <ImageWithFallback
                 src={featuredStory.tile}
@@ -28,16 +39,7 @@ export function StoriesPage() {
                 className="block w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>
-            <div className="mt-6 lg:mt-8 text-center max-w-[720px] mx-auto">
-              <p className="font-['Optima',sans-serif] text-[11px] tracking-[4px] uppercase text-[#525F47]/60 mb-3">
-                Featured · {featuredStory.chapter}
-              </p>
-              <h2 className="font-['Optima',sans-serif] text-[28px] lg:text-[40px] tracking-[4px] lg:tracking-[6px] uppercase text-[#1A1A1A] leading-[1.15] mb-4">
-                {featuredStory.title}
-              </h2>
-              <p className="font-['Inter',sans-serif] text-[14px] lg:text-[15px] leading-[1.85] text-[#2C2C2C]/70 mb-5">
-                {featuredStory.excerpt}
-              </p>
+            <div className="mt-6 lg:mt-8 text-center">
               <span className="inline-block font-['Optima',sans-serif] text-[12px] tracking-[3px] uppercase text-[#525F47] border-b border-[#525F47] pb-1 group-hover:text-[#1A1A1A] group-hover:border-[#1A1A1A] transition-colors">
                 Read the Story →
               </span>
