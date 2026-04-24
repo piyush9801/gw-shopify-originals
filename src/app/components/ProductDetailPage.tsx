@@ -45,19 +45,13 @@ function Accordion({
 export function ProductDetailPage() {
   const { slug } = useParams();
   const product = products.find((p) => p.slug === slug) || products[0];
-  const sizes =
-    product.fitSizes === "XS-XXL"
-      ? ["XS", "S", "M", "L", "XL", "XXL"]
-      : ["XS", "S", "M", "L", "XL"];
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setSelectedImage(0);
-    setSelectedSize(null);
     setQuantity(1);
   }, [slug]);
 
@@ -150,33 +144,14 @@ export function ProductDetailPage() {
 
               {/* Description — matches real site format */}
               <div className="font-['Inter',sans-serif] text-[14px] text-[#1A1A1A]/75 leading-[1.8] mb-8">
-                <p>Fits {product.fitSizes}</p>
                 <p>{product.dimensions}</p>
               </div>
 
-              {/* Size Selector */}
+              {/* Fit callout — replaces the old size selector */}
               <div className="mb-6">
-                <p className="font-['Inter',sans-serif] text-[13px] text-[#1A1A1A]/60 mb-3">
-                  Size:{" "}
-                  <span className="text-[#1A1A1A]">
-                    {selectedSize || "Select"}
-                  </span>
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`w-[52px] h-[42px] border text-[13px] tracking-[1px] font-['Optima',sans-serif] uppercase transition-all ${
-                        selectedSize === size
-                          ? "border-[#1A1A1A] bg-[#1A1A1A] text-white"
-                          : "border-[#C4CFC0]/60 text-[#1A1A1A]/70 hover:border-[#1A1A1A]"
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
+                <span className="inline-block font-['Optima',sans-serif] text-[13px] tracking-[3px] uppercase text-[#1A1A1A] bg-[#C4CFC0]/40 border border-[#525F47]/30 px-4 py-2">
+                  Fits {product.fitSizes}
+                </span>
               </div>
 
               {/* Quantity */}
