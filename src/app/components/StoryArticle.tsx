@@ -154,14 +154,14 @@ export function StoryArticle() {
         </div>
       </section>
 
-      {/* ─── Next story — image only (non-clickable) ─── */}
-      {nextStory && (
+      {/* ─── Below image — static, non-clickable ─── */}
+      {(story.belowImage || nextStory) && (
         <section className="border-t border-[#C4CFC0]/40 py-16 lg:py-24 px-6 lg:px-10">
           <div className="max-w-[1100px] mx-auto">
             <div className="relative overflow-hidden max-w-[720px] mx-auto aspect-[4/5]">
               <ImageWithFallback
-                src={nextStory.featureImage ?? nextStory.tile}
-                alt={nextStory.title}
+                src={story.belowImage ?? nextStory!.featureImage ?? nextStory!.tile}
+                alt=""
                 className="block w-full h-full object-cover"
               />
             </div>

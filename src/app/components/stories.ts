@@ -4,6 +4,7 @@
 // article page — short stories can all share StoryArticle.tsx.
 import brandStudioPortrait from "../../assets/editorial/brand-studio-portrait.png";
 import nyfwGreenRunway from "../../assets/editorial/nyfw-green-runway.png";
+import nyfwRedRunway from "../../assets/editorial/nyfw-red-runway.png";
 import laEditorialGroup from "../../assets/editorial/la-editorial-group.png";
 import { bbagleyStoryHero } from "./bbagleyImages";
 
@@ -20,6 +21,9 @@ export type Story = {
   // Only for "article" kind
   body?: string[];
   featureImage?: string;
+  // Static image shown at the bottom of the article (non-clickable).
+  // Defaults to the next story's featureImage/tile if omitted.
+  belowImage?: string;
 };
 
 export const stories: Story[] = [
@@ -44,6 +48,7 @@ export const stories: Story[] = [
     tile: nyfwGreenRunway,
     kind: "article",
     featureImage: nyfwGreenRunway,
+    belowImage: nyfwRedRunway,
     body: [
       "New York Fashion Week has never been about what's new. It's about what's now.",
       "For our first runway, we presented ten reworked looks — hoodies, jackets, and outerwear sourced secondhand and rebuilt by hand. No two pieces shared the same pattern, the same seams, or the same history.",
