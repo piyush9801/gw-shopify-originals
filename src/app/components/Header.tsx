@@ -84,7 +84,7 @@ export function Header() {
             to="/stories"
             className={`transition-opacity whitespace-nowrap pb-1 ${isStory ? "opacity-100 border-b border-current" : "opacity-70 hover:opacity-100"}`}
           >
-            Stories
+            The Wrld
           </Link>
           <Link
             to="/sustainability"
@@ -127,7 +127,7 @@ export function Header() {
         }`}>
           <Link to="/shop" onClick={() => setMobileMenuOpen(false)}>Shop</Link>
           <Link to="/shop?filter=new" onClick={() => setMobileMenuOpen(false)}>New Arrivals</Link>
-          <Link to="/stories" onClick={() => setMobileMenuOpen(false)}>Stories</Link>
+          <Link to="/stories" onClick={() => setMobileMenuOpen(false)}>The Wrld</Link>
           <Link to="/sustainability" onClick={() => setMobileMenuOpen(false)}>Sustainability</Link>
         </nav>
       )}
