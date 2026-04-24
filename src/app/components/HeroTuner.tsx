@@ -10,12 +10,12 @@ export type HeroTune = {
 };
 
 export const HERO_TUNE_DEFAULTS: HeroTune = {
-  swooshTop: 50,
-  swooshWidth: 55,
-  swooshMaxWidth: 640,
-  swooshOpacity: 90,
-  heroObjectX: 50,
-  heroObjectY: 45,
+  swooshTop: 52,
+  swooshWidth: 27,
+  swooshMaxWidth: 550,
+  swooshOpacity: 100,
+  heroObjectX: 100,
+  heroObjectY: 64,
 };
 
 const STORAGE_KEY = "gw-hero-tune";
