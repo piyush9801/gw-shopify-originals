@@ -12,12 +12,12 @@ import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
 const SUSTAIN_HERO_DEFAULTS: TuneConfig = {
   imageIndex: 21,          // 3142
-  cropX: 50,
-  cropY: 45,
+  cropX: 46,
+  cropY: 76,
   swooshEnabled: true,
   swooshTop: 40,
   swooshWidth: 36,
-  swooshMaxWidth: 440,
+  swooshMaxWidth: 360,
   swooshOpacity: 85,
 };
 
