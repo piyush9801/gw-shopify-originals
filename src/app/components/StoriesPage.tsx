@@ -67,6 +67,7 @@ export function StoriesPage() {
                       src={story.tile}
                       alt={story.title}
                       className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      style={{ objectPosition: story.tileObjectPosition ?? "center" }}
                     />
                   </div>
                   <div className="mt-5 lg:mt-6">

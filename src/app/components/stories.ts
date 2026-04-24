@@ -15,6 +15,8 @@ export type Story = {
   excerpt: string;
   date: string;
   tile: string;
+  // CSS object-position for the tile image (e.g. "50% 20%"). Defaults to "center".
+  tileObjectPosition?: string;
   // "full" → dedicated page at /story (existing),
   // "article" → uses the StoryArticle template at /stories/:slug
   kind: "full" | "article";
@@ -64,6 +66,7 @@ export const stories: Story[] = [
       "A sustainable showcase at Goodwill LA, built around reworked Nike archive pieces and Billie Eilish's vision.",
     date: "Fall 2023",
     tile: brandStudioPortrait,
+    tileObjectPosition: "50% 15%",
     kind: "article",
     featureImage: laEditorialGroup,
     body: [
