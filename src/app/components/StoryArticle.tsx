@@ -8,20 +8,20 @@ import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
 const ARTICLE_DEFAULTS: Record<string, TuneConfig> = {
   "nyfw-runway": {
-    imageIndex: 21,          // 3142 — 1989, arm-raised landscape
+    imageIndex: 21,
     cropX: 50,
-    cropY: 80,
-    swooshEnabled: true,
+    cropY: 17,
+    swooshEnabled: false,
     swooshTop: 38,
     swooshWidth: 48,
     swooshMaxWidth: 300,
     swooshOpacity: 85,
   },
   "nike-billie-goodwill": {
-    imageIndex: 7,           // 3128 — Noah Kahan crouching
+    imageIndex: 7,
     cropX: 50,
-    cropY: 45,
-    swooshEnabled: true,
+    cropY: 13,
+    swooshEnabled: false,
     swooshTop: 50,
     swooshWidth: 40,
     swooshMaxWidth: 500,
