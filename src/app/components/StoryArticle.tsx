@@ -10,11 +10,11 @@ const ARTICLE_DEFAULTS: Record<string, TuneConfig> = {
   "nyfw-runway": {
     imageIndex: 21,          // 3142 — 1989, arm-raised landscape
     cropX: 50,
-    cropY: 45,
+    cropY: 80,
     swooshEnabled: true,
-    swooshTop: 50,
-    swooshWidth: 40,
-    swooshMaxWidth: 500,
+    swooshTop: 38,
+    swooshWidth: 48,
+    swooshMaxWidth: 300,
     swooshOpacity: 85,
   },
   "nike-billie-goodwill": {
