@@ -61,7 +61,7 @@ export const bbagleyProducts = [
   bbagley[5], bbagley[9], bbagley[14], bbagley[18], bbagley[23], bbagley[27],
 ];
 export const bbagleyInstagram = [
-  bbagley[3], bbagley[10], bbagley[25], bbagley[16], bbagley[22],
+  bbagley[3], bbagley[7], bbagley[25], bbagley[16], bbagley[22],  // incl. 3128
 ];
 
 // Story page
