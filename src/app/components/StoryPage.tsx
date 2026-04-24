@@ -76,7 +76,7 @@ function Hero() {
             alt="Greenwrld reworked garment collage"
             className="block w-full h-auto"
           />
-          <HeroSwoosh className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
+          <HeroSwoosh className="absolute left-1/2 top-[70%] -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
         </div>
       </div>
     </section>
