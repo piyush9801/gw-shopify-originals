@@ -154,26 +154,17 @@ export function StoryArticle() {
         </div>
       </section>
 
-      {/* ─── Next story — image only ─── */}
+      {/* ─── Next story — image only (non-clickable) ─── */}
       {nextStory && (
         <section className="border-t border-[#C4CFC0]/40 py-16 lg:py-24 px-6 lg:px-10">
           <div className="max-w-[1100px] mx-auto">
-            <Link
-              to={
-                nextStory.kind === "full"
-                  ? "/story"
-                  : `/stories/${nextStory.slug}`
-              }
-              className="group block"
-            >
-              <div className="relative overflow-hidden max-w-[720px] mx-auto aspect-[4/5]">
-                <ImageWithFallback
-                  src={nextStory.featureImage ?? nextStory.tile}
-                  alt={nextStory.title}
-                  className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-              </div>
-            </Link>
+            <div className="relative overflow-hidden max-w-[720px] mx-auto aspect-[4/5]">
+              <ImageWithFallback
+                src={nextStory.featureImage ?? nextStory.tile}
+                alt={nextStory.title}
+                className="block w-full h-full object-cover"
+              />
+            </div>
           </div>
         </section>
       )}
