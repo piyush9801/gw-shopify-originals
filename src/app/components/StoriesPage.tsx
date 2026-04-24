@@ -62,11 +62,11 @@ export function StoriesPage() {
                   to={storyHref(story.slug, story.kind)}
                   className="group block"
                 >
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-[4/5]">
                     <ImageWithFallback
                       src={story.tile}
                       alt={story.title}
-                      className="block w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                   </div>
                   <div className="mt-5 lg:mt-6">
