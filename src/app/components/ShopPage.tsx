@@ -11,11 +11,11 @@ import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 const SHOP_HERO_DEFAULTS: TuneConfig = {
   imageIndex: 24,          // 3145
   cropX: 50,
-  cropY: 35,
+  cropY: 56,
   swooshEnabled: true,
   swooshTop: 42,
-  swooshWidth: 48,
-  swooshMaxWidth: 480,
+  swooshWidth: 60,
+  swooshMaxWidth: 530,
   swooshOpacity: 90,
 };
 
