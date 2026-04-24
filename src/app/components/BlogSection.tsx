@@ -12,7 +12,7 @@ function storyHref(slug: string, kind: "full" | "article") {
 }
 
 const CARD_DEFAULTS: Record<string, TuneConfig> = {
-  "the-wrld": { imageIndex: 0, cropX: 50, cropY: 17, scale: 1.4, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
+  "the-wrld": { imageIndex: 0, cropX: 45, cropY: 46, scale: 2.3, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
   "nyfw-runway": { imageIndex: 0, cropX: 50, cropY: 9, scale: 1, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
   "nike-billie-goodwill": { imageIndex: 0, cropX: 50, cropY: 19, scale: 1, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
 };
