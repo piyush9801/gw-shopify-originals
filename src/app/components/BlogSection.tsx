@@ -12,9 +12,9 @@ function storyHref(slug: string, kind: "full" | "article") {
 }
 
 const CARD_DEFAULTS: Record<string, TuneConfig> = {
-  "the-wrld": { imageIndex: 0, cropX: 50, cropY: 30, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
-  "nyfw-runway": { imageIndex: 0, cropX: 50, cropY: 30, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
-  "nike-billie-goodwill": { imageIndex: 0, cropX: 50, cropY: 30, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
+  "the-wrld": { imageIndex: 0, cropX: 50, cropY: 17, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
+  "nyfw-runway": { imageIndex: 0, cropX: 50, cropY: 9, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
+  "nike-billie-goodwill": { imageIndex: 0, cropX: 50, cropY: 19, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
 };
 
 // Each card gets its own tuner in a different corner so they don't overlap.
