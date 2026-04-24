@@ -14,24 +14,8 @@ export function StoriesPage() {
 
   return (
     <div className="bg-[#E8E6E0]">
-      {/* ─── Header ─── */}
-      <section className="pt-28 lg:pt-36 pb-10 lg:pb-16 px-6">
-        <div className="max-w-[1200px] mx-auto text-center">
-          <p className="font-['Optima',sans-serif] text-[11px] tracking-[5px] uppercase text-[#525F47]/60 mb-4">
-            Journal
-          </p>
-          <h1 className="font-['Optima',sans-serif] text-[48px] lg:text-[80px] tracking-[8px] lg:tracking-[14px] uppercase text-[#1A1A1A] leading-[1]">
-            Stor<span className="text-[#525F47]">ies</span>
-          </h1>
-          <div className="w-[60px] h-px bg-[#C46A45] mx-auto mt-8" />
-          <p className="font-['Inter',sans-serif] text-[14px] lg:text-[15px] leading-[1.85] text-[#2C2C2C]/70 mt-8 max-w-[520px] mx-auto">
-            Notes, moments, and the people behind every piece.
-          </p>
-        </div>
-      </section>
-
       {/* ─── Featured Story — full-width tile ─── */}
-      <section className="pb-14 lg:pb-24 px-6 lg:px-10">
+      <section className="pt-28 lg:pt-36 pb-14 lg:pb-24 px-6 lg:px-10">
         <div className="max-w-[1400px] mx-auto">
           <Link
             to={storyHref(featuredStory.slug, featuredStory.kind)}
