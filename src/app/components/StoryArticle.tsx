@@ -154,13 +154,10 @@ export function StoryArticle() {
         </div>
       </section>
 
-      {/* ─── Divider + next story ─── */}
+      {/* ─── Next story — image only ─── */}
       {nextStory && (
         <section className="border-t border-[#C4CFC0]/40 py-16 lg:py-24 px-6 lg:px-10">
           <div className="max-w-[1100px] mx-auto">
-            <p className="font-['Optima',sans-serif] text-[11px] tracking-[4px] uppercase text-[#525F47]/60 mb-6 text-center">
-              Next
-            </p>
             <Link
               to={
                 nextStory.kind === "full"
@@ -175,14 +172,6 @@ export function StoryArticle() {
                   alt={nextStory.title}
                   className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 />
-              </div>
-              <div className="text-center mt-5 lg:mt-7">
-                <p className="font-['Optima',sans-serif] text-[11px] tracking-[3px] uppercase text-[#525F47]/60 mb-2">
-                  {nextStory.chapter}
-                </p>
-                <h3 className="font-['Optima',sans-serif] text-[22px] lg:text-[30px] tracking-[4px] uppercase text-[#1A1A1A] group-hover:text-[#525F47] transition-colors">
-                  {nextStory.title}
-                </h3>
               </div>
             </Link>
           </div>
