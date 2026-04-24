@@ -1,8 +1,7 @@
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import shootMatisse from "../../assets/brand-shoot/shoot-matisse-v4.png";
-import shootSunburst from "../../assets/brand-shoot/shoot-sunburst-v4.png";
-import shootColorblock from "../../assets/brand-shoot/shoot-colorblock-v4.png";
+import { bbagleyBlog } from "./bbagleyImages";
+const [shootMatisse, shootSunburst, shootColorblock] = bbagleyBlog;  // 3127, 3137, 3141
 
 // Each editorial maps to an existing story page — no new routes needed.
 const editorials = [

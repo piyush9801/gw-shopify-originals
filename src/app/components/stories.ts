@@ -5,7 +5,7 @@
 import storyBreak1 from "../../assets/brand-shoot/story/story-break-1.png";
 import storyNyfw from "../../assets/brand-shoot/story/story-nyfw.png";
 import storyCollab from "../../assets/brand-shoot/story/story-collab.png";
-import heroSunburst from "../../assets/brand-shoot/shoot-sunburst-v4.png";
+import { bbagleyStoryHero as heroSunburst } from "./bbagleyImages";
 
 export type Story = {
   slug: string;

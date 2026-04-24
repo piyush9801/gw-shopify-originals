@@ -35,43 +35,45 @@ export const bbagley: string[] = [
   img3142, img3143, img3144, img3145, img3146, img3147, img3148,
 ];
 
-// ─── Allocation plan ───
-// The 28 photos are from one photoshoot, so consecutive indices look nearly
-// identical (same burst). We spread adjacent slots by large jumps so no
-// two near-duplicates land in the same grid.
+// ─── Allocation plan (client feedback, 2026-04-24) ───
+// Chosen FRONT:          3142 [21] — landscape, 1989 sweatshirt, dynamic pose
+// Re-emphasized (prime): 3127 [6], 3137 [16], 3141 [20]
+// Small-picture callout: 3146 [25]
+// Non-chosen fronts highlighted elsewhere: 3122 [1], 3128 [7], 3145 [24]
+// Photo index = (photo number - 3121). e.g. 3142 → bbagley[21].
 
 // Home page
-export const bbagleyHero = bbagley[0];
-export const bbagleyBestSellers = [              // 4 tiles — gap of 7
-  bbagley[1], bbagley[8], bbagley[15], bbagley[22],
+export const bbagleyHero = bbagley[21];          // 3142 — front-page hero
+export const bbagleyBestSellers = [
+  bbagley[1], bbagley[7], bbagley[24], bbagley[20], // 3122, 3128, 3145, 3141
 ];
-export const bbagleyMediaGrid = [                // 3 tiles — gap of 9
-  bbagley[4], bbagley[13], bbagley[26],
+export const bbagleyMediaGrid = [
+  bbagley[6], bbagley[16], bbagley[25],             // 3127, 3137, 3146
 ];
-export const bbagleyCollab = bbagley[19];
-export const bbagleyBlog = [                     // 3 "Street to Runway" tiles
-  bbagley[6], bbagley[17], bbagley[25],
+export const bbagleyCollab = bbagley[19];        // 3140
+export const bbagleyBlog = [
+  bbagley[6], bbagley[16], bbagley[20],             // 3127, 3137, 3141
 ];
 
 // Shop page
-export const bbagleyShopHero = bbagley[2];
-export const bbagleyProducts = [                 // 6 tiles — gap of ~4, interleaved vs home
+export const bbagleyShopHero = bbagley[24];      // 3145
+export const bbagleyProducts = [
   bbagley[5], bbagley[9], bbagley[14], bbagley[18], bbagley[23], bbagley[27],
 ];
-export const bbagleyInstagram = [                // 5 tiles — gap of ~5
-  bbagley[3], bbagley[10], bbagley[16], bbagley[21], bbagley[25],
+export const bbagleyInstagram = [
+  bbagley[3], bbagley[10], bbagley[25], bbagley[16], bbagley[22],
 ];
 
 // Story page
-export const bbagleyStoryHero = bbagley[6];
-export const bbagleyStoryExtras = [              // 3 inline image-breaks
-  bbagley[11], bbagley[17], bbagley[24],
+export const bbagleyStoryHero = bbagley[20];     // 3141
+export const bbagleyStoryExtras = [
+  bbagley[6], bbagley[16], bbagley[25],             // 3127, 3137, 3146
 ];
 
 // Sustainability
-export const bbagleyParka = bbagley[7];
+export const bbagleyParka = bbagley[7];          // 3128
 export const bbagleySustain = [
-  bbagley[12], bbagley[20], bbagley[11], bbagley[24], bbagley[17],
+  bbagley[1], bbagley[12], bbagley[19], bbagley[11], bbagley[24],
 ];
 
 // Product detail galleries — 4 visually distinct photos per product

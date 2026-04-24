@@ -1,16 +1,19 @@
 import { Link } from "react-router";
-import imgHero from "../../assets/brand-shoot/shoot-home-hero-v10.png";
 import { HeroSwoosh } from "./HeroSwoosh";
+import { bbagleyHero } from "./bbagleyImages";
 
 export function HeroSection() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-end overflow-hidden pb-16 bg-[#E8E6E0]">
-      {/* Full-bleed collage — cover fills the viewport, focus on the model's center */}
+      {/* Full-bleed photography — bbagley 3142 (client-chosen front) */}
       <img
-        src={imgHero}
+        src={bbagleyHero}
         alt="GREENWRLD upcycled fashion"
-        className="absolute inset-0 w-full h-full object-cover object-[50%_55%]"
+        className="absolute inset-0 w-full h-full object-cover object-[50%_45%]"
       />
+
+      {/* Brand swoosh + sparkles around the model */}
+      <HeroSwoosh className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 w-[55vw] max-w-[640px] h-auto opacity-90 drop-shadow-[0_2px_14px_rgba(0,0,0,0.3)] z-[5]" />
 
       {/* Top gradient — makes nav links readable over the cream-collage top */}
       <div className="absolute inset-x-0 top-0 h-[160px] bg-gradient-to-b from-black/55 via-black/20 to-transparent pointer-events-none z-[15]" />

@@ -4,7 +4,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 import { bbagleyInstagram } from "./bbagleyImages";
 import { products as productCatalog } from "./products";
-import imgShopHero from "../../assets/brand-shoot/shoot-shop-hero-v4.png";
+import { bbagleyShopHero as imgShopHero } from "./bbagleyImages";
 import imgNewArrivalsHero from "../../assets/brand-shoot/shoot-colorblock-v4.png";
 import { PatternDivider } from "./PatternDivider";
 import { HeroSwoosh } from "./HeroSwoosh";

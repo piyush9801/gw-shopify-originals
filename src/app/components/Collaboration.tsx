@@ -1,5 +1,5 @@
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import imgCollab from "../../assets/brand-shoot/shoot-home-hero-v8.png";
+import { bbagleyCollab as imgCollab } from "./bbagleyImages";
 import patternFlower from "../../assets/patterns/pattern-flower.png";
 
 export function Collaboration() {

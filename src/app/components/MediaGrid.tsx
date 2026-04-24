@@ -1,8 +1,7 @@
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import shoot1 from "../../assets/brand-shoot/shoot-mediagrid-1-v5.png";
-import shoot2 from "../../assets/brand-shoot/shoot-mediagrid-2-v5.png";
-import shoot3 from "../../assets/brand-shoot/shoot-mediagrid-3-v5.png";
+import { bbagleyMediaGrid } from "./bbagleyImages";
+const [shoot1, shoot2, shoot3] = bbagleyMediaGrid;  // 3127, 3137, 3146
 
 const cards = [
   {
