@@ -35,6 +35,7 @@ type Props = {
   title: string;
   storageKey: string;
   supportsSwoosh: boolean;
+  supportsImagePicker?: boolean;
   tune: TuneConfig;
   onChange: (next: TuneConfig) => void;
   position?: Position;
@@ -47,7 +48,7 @@ const POSITIONS: Record<Position, string> = {
   tl: "top-20 left-4",
 };
 
-export function TunerPanel({ title, storageKey, supportsSwoosh, tune, onChange, position = "br" }: Props) {
+export function TunerPanel({ title, storageKey, supportsSwoosh, supportsImagePicker = true, tune, onChange, position = "br" }: Props) {
   const [open, setOpen] = useState(true);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -89,7 +90,7 @@ export function TunerPanel({ title, storageKey, supportsSwoosh, tune, onChange, 
       </div>
       {open && (
         <div className="p-3 space-y-3 max-h-[80vh] overflow-auto">
-          <Section label="Image">
+          {supportsImagePicker && <Section label="Image">
             <div className="flex items-center gap-2">
               <img
                 src={bbagley[tune.imageIndex]}
@@ -125,7 +126,7 @@ export function TunerPanel({ title, storageKey, supportsSwoosh, tune, onChange, 
                 ))}
               </div>
             )}
-          </Section>
+          </Section>}
 
           <Section label="Crop">
             <Slider label="X" value={tune.cropX} min={0} max={100} step={1} unit="%" onChange={(v) => update("cropX", v)} />
