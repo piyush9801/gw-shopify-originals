@@ -32,6 +32,7 @@ export const stories: Story[] = [
     date: "2024",
     tile: bbagleyStoryHero,
     kind: "full",
+    featureImage: brandStudioPortrait,
   },
   {
     slug: "nyfw-runway",

@@ -168,7 +168,7 @@ export function StoryArticle() {
             >
               <div className="relative overflow-hidden max-w-[720px] mx-auto aspect-[4/5]">
                 <ImageWithFallback
-                  src={nextStory.tile}
+                  src={nextStory.featureImage ?? nextStory.tile}
                   alt={nextStory.title}
                   className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 />
