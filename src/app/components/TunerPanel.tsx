@@ -29,15 +29,25 @@ function isEditMode(): boolean {
 
 const IMAGE_LABELS = Array.from({ length: 28 }, (_, i) => `3${121 + i}`);
 
+type Position = "br" | "tr" | "bl" | "tl";
+
 type Props = {
   title: string;
   storageKey: string;
   supportsSwoosh: boolean;
   tune: TuneConfig;
   onChange: (next: TuneConfig) => void;
+  position?: Position;
 };
 
-export function TunerPanel({ title, storageKey, supportsSwoosh, tune, onChange }: Props) {
+const POSITIONS: Record<Position, string> = {
+  br: "bottom-4 right-4",
+  tr: "top-20 right-4",
+  bl: "bottom-4 left-4",
+  tl: "top-20 left-4",
+};
+
+export function TunerPanel({ title, storageKey, supportsSwoosh, tune, onChange, position = "br" }: Props) {
   const [open, setOpen] = useState(true);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -65,7 +75,7 @@ export function TunerPanel({ title, storageKey, supportsSwoosh, tune, onChange }
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-[100] bg-white/95 backdrop-blur border border-black/10 rounded-lg shadow-xl text-[12px] text-[#1A1A1A] font-mono"
+      className={`fixed ${POSITIONS[position]} z-[100] bg-white/95 backdrop-blur border border-black/10 rounded-lg shadow-xl text-[12px] text-[#1A1A1A] font-mono`}
       style={{ width: open ? 300 : "auto" }}
     >
       <div className="flex items-center justify-between px-3 py-2 border-b border-black/10">

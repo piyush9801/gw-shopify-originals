@@ -1,15 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Link } from "react-router";
 
 /* ─── bbagley photography set ─── */
-import { bbagleySustain } from "./bbagleyImages";
+import { bbagley, bbagleySustain } from "./bbagleyImages";
 
 /* ─── brand-shoot imagery ─── */
-import sustainReworking from "../../assets/brand-shoot/sustain-reworking-v4.png";
 import sustainChoosing from "../../assets/brand-shoot/sustain-choosing-v4.png";
-import heroCollage from "../../assets/brand-shoot/story/story-break-1.png";
 import { HeroSwoosh } from "./HeroSwoosh";
+import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
+
+const SUSTAIN_HERO_DEFAULTS: TuneConfig = {
+  imageIndex: 21,          // 3142
+  cropX: 50,
+  cropY: 45,
+  swooshEnabled: true,
+  swooshTop: 40,
+  swooshWidth: 36,
+  swooshMaxWidth: 440,
+  swooshOpacity: 85,
+};
+
+const SUSTAIN_REWORKING_DEFAULTS: TuneConfig = {
+  imageIndex: 7,           // 3128 — Noah Kahan crouching
+  cropX: 50,
+  cropY: 45,
+  swooshEnabled: true,
+  swooshTop: 50,
+  swooshWidth: 30,
+  swooshMaxWidth: 380,
+  swooshOpacity: 85,
+};
 
 // Mix: documentary originals for authenticity (problem/craft beats),
 // painted-mural treated for aspirational beats (method / choosing better).
@@ -17,7 +38,6 @@ const imgLeaves = bbagleySustain[0];            // original — nature break
 const imgWaste = bbagleySustain[1];             // original — fast-fashion problem
 const imgArtisan = bbagleySustain[2];           // original — hands / craft break
 const imgCotton = bbagleySustain[3];            // original — raw materials break
-const imgProduct2 = sustainReworking;           // treated — painted botanical
 const imgEarthTones = sustainChoosing;          // treated — painted dusk-earth halo
 
 /* ─── Full-bleed image break ─── */
@@ -37,6 +57,7 @@ function ImageBreak({ src, alt }: { src: string; alt: string }) {
    1. HERO — confident typographic statement on forest green
    ============================================================ */
 function Hero() {
+  const [tune, setTune] = useState(() => loadTune("gw-sustain-hero-tune", SUSTAIN_HERO_DEFAULTS));
   return (
     <section className="relative bg-[#DDD7CA] pt-24 lg:pt-32 pb-10 lg:pb-16 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -52,13 +73,25 @@ function Hero() {
 
         <div className="relative max-h-[70vh] overflow-hidden">
           <ImageWithFallback
-            src={heroCollage}
+            src={bbagley[tune.imageIndex]}
             alt="Greenwrld sustainability collage"
             className="block w-full h-full max-h-[70vh] object-cover"
+            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}
           />
-          <HeroSwoosh className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-[36%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
+          {tune.swooshEnabled && (
+            <HeroSwoosh
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]"
+              style={{
+                top: `${tune.swooshTop}%`,
+                width: `${tune.swooshWidth}vw`,
+                maxWidth: `${tune.swooshMaxWidth}px`,
+                opacity: tune.swooshOpacity / 100,
+              }}
+            />
+          )}
         </div>
       </div>
+      <TunerPanel title="Sustain Hero" storageKey="gw-sustain-hero-tune" supportsSwoosh={true} tune={tune} onChange={setTune} position="tr" />
     </section>
   );
 }
@@ -155,17 +188,30 @@ function FastFashion() {
    Light section, staggered layout
    ============================================================ */
 function Reworking() {
+  const [tune, setTune] = useState(() => loadTune("gw-sustain-reworking-tune", SUSTAIN_REWORKING_DEFAULTS));
   return (
     <section className="bg-[#E8E6E0] py-20 lg:py-32 px-6">
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
         {/* Image with swoosh overlay */}
         <div className="w-full lg:w-[50%] flex-shrink-0 relative">
           <ImageWithFallback
-            src={imgProduct2}
+            src={bbagley[tune.imageIndex]}
             alt="Reworked garment"
             className="w-full h-[360px] lg:h-[520px] object-cover"
+            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}
           />
-          <HeroSwoosh className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 w-[55%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
+          {tune.swooshEnabled && (
+            <HeroSwoosh
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]"
+              style={{
+                top: `${tune.swooshTop}%`,
+                width: `${tune.swooshWidth}vw`,
+                maxWidth: `${tune.swooshMaxWidth}px`,
+                opacity: tune.swooshOpacity / 100,
+              }}
+            />
+          )}
+          <TunerPanel title="Sustain Reworking" storageKey="gw-sustain-reworking-tune" supportsSwoosh={true} tune={tune} onChange={setTune} position="br" />
         </div>
 
         {/* Text */}
