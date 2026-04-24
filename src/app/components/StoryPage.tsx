@@ -15,10 +15,10 @@ import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 const STORY_HERO_DEFAULTS: TuneConfig = {
   imageIndex: 0,           // unused — hero uses fixed editorial image
   cropX: 50,
-  cropY: 30,
-  swooshEnabled: true,
-  swooshTop: 50,
-  swooshWidth: 40,
+  cropY: 21,
+  swooshEnabled: false,
+  swooshTop: 64,
+  swooshWidth: 45,
   swooshMaxWidth: 500,
   swooshOpacity: 85,
 };
