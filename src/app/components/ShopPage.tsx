@@ -2,12 +2,33 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-import { bbagleyInstagram } from "./bbagleyImages";
+import { bbagley, bbagleyInstagram } from "./bbagleyImages";
 import { products as productCatalog } from "./products";
-import { bbagleyShopHero as imgShopHero } from "./bbagleyImages";
-import imgNewArrivalsHero from "../../assets/brand-shoot/shoot-colorblock-v4.png";
 import { PatternDivider } from "./PatternDivider";
 import { HeroSwoosh } from "./HeroSwoosh";
+import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
+
+const SHOP_HERO_DEFAULTS: TuneConfig = {
+  imageIndex: 24,          // 3145
+  cropX: 50,
+  cropY: 35,
+  swooshEnabled: true,
+  swooshTop: 42,
+  swooshWidth: 48,
+  swooshMaxWidth: 480,
+  swooshOpacity: 90,
+};
+
+const NEW_ARRIVALS_HERO_DEFAULTS: TuneConfig = {
+  imageIndex: 16,          // 3137
+  cropX: 50,
+  cropY: 35,
+  swooshEnabled: false,
+  swooshTop: 42,
+  swooshWidth: 48,
+  swooshMaxWidth: 480,
+  swooshOpacity: 90,
+};
 
 /* ─── Product Data — derived from canonical catalog ─── */
 const products = productCatalog.map((p) => ({
@@ -35,9 +56,12 @@ export function ShopPage() {
   const [sortOpen, setSortOpen] = useState(false);
   const [sortBy, setSortBy] = useState("Best Selling");
   const [searchParams] = useSearchParams();
+  const [shopTune, setShopTune] = useState(() => loadTune("gw-shop-tune", SHOP_HERO_DEFAULTS));
+  const [newArrivalsTune, setNewArrivalsTune] = useState(() => loadTune("gw-newarrivals-tune", NEW_ARRIVALS_HERO_DEFAULTS));
 
   const filter = searchParams.get("filter");
   const isNewArrivals = filter === "new";
+  const activeTune = isNewArrivals ? newArrivalsTune : shopTune;
   const displayedProducts = isNewArrivals
     ? products.filter((p) => p.badge === "New")
     : products;
@@ -55,13 +79,21 @@ export function ShopPage() {
       {/* ═══ Hero Banner ═══ */}
       <section className="relative w-full h-[70vh] lg:h-[80vh] flex flex-col items-center justify-end overflow-hidden pb-16">
         <img
-          src={isNewArrivals ? imgNewArrivalsHero : imgShopHero}
+          src={bbagley[activeTune.imageIndex]}
           alt="GREENWRLD upcycled fashion collection"
-          className="absolute inset-0 w-full h-full object-cover object-[50%_35%]"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: `${activeTune.cropX}% ${activeTune.cropY}%` }}
         />
-        {/* Brand swoosh + sparkles around the model — only on default shop hero */}
-        {!isNewArrivals && (
-          <HeroSwoosh className="absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 w-[48vw] max-w-[420px] lg:max-w-[480px] h-auto mix-blend-screen opacity-90 drop-shadow-[0_2px_14px_rgba(0,0,0,0.3)]" />
+        {activeTune.swooshEnabled && (
+          <HeroSwoosh
+            className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto mix-blend-screen drop-shadow-[0_2px_14px_rgba(0,0,0,0.3)]"
+            style={{
+              top: `${activeTune.swooshTop}%`,
+              width: `${activeTune.swooshWidth}vw`,
+              maxWidth: `${activeTune.swooshMaxWidth}px`,
+              opacity: activeTune.swooshOpacity / 100,
+            }}
+          />
         )}
         {/* Top fade — gives the GREENWRLD logo a darker backing so it reads cleanly over the subject */}
         <div className="absolute inset-x-0 top-0 h-[18%] bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
@@ -79,6 +111,11 @@ export function ShopPage() {
             {isNewArrivals ? "Freshly reworked this week" : "Made from what already exists"}
           </p>
         </div>
+        {isNewArrivals ? (
+          <TunerPanel title="New Arrivals Hero" storageKey="gw-newarrivals-tune" supportsSwoosh={true} tune={newArrivalsTune} onChange={setNewArrivalsTune} />
+        ) : (
+          <TunerPanel title="Shop Hero" storageKey="gw-shop-tune" supportsSwoosh={true} tune={shopTune} onChange={setShopTune} />
+        )}
       </section>
 
       {/* ═══ Toolbar ═══ */}
