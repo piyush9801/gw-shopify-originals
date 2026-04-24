@@ -16,7 +16,7 @@ export function StoriesPage() {
     <div className="bg-[#E8E6E0]">
       {/* ─── Featured Story — full-width tile ─── */}
       <section className="pt-28 lg:pt-36 pb-14 lg:pb-24 px-6 lg:px-10">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[960px] mx-auto">
           <Link
             to={storyHref(featuredStory.slug, featuredStory.kind)}
             className="group block"
@@ -32,11 +32,11 @@ export function StoriesPage() {
                 {featuredStory.excerpt}
               </p>
             </div>
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden max-h-[60vh]">
               <ImageWithFallback
                 src={featuredStory.tile}
                 alt={featuredStory.title}
-                className="block w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
+                className="block w-full h-full max-h-[60vh] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>
             <div className="mt-6 lg:mt-8 text-center">

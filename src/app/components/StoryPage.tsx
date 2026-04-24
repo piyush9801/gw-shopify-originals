@@ -25,11 +25,11 @@ const imgStitching = bbagleyStoryExtras[2];
 function TornBreak({ src, alt }: { src: string; alt: string }) {
   return (
     <section className="bg-[#E8E6E0] overflow-hidden">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1400px] mx-auto max-h-[60vh]">
         <ImageWithFallback
           src={src}
           alt={alt}
-          className="block w-full h-auto"
+          className="block w-full h-full max-h-[60vh] object-cover"
         />
       </div>
     </section>
@@ -70,11 +70,11 @@ function Hero() {
         </div>
 
         {/* Collage with swoosh overlay */}
-        <div className="relative">
+        <div className="relative max-h-[65vh] overflow-hidden">
           <ImageWithFallback
             src={heroSunburst}
             alt="Greenwrld reworked garment collage"
-            className="block w-full h-auto"
+            className="block w-full h-full max-h-[65vh] object-cover"
           />
           <HeroSwoosh className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
         </div>

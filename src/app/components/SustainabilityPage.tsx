@@ -50,11 +50,11 @@ function Hero() {
           <div className="w-[60px] h-px bg-[#C46A45] mx-auto mt-8" />
         </div>
 
-        <div className="relative">
+        <div className="relative max-h-[70vh] overflow-hidden">
           <ImageWithFallback
             src={heroCollage}
             alt="Greenwrld sustainability collage"
-            className="block w-full h-auto"
+            className="block w-full h-full max-h-[70vh] object-cover"
           />
           <HeroSwoosh className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-[36%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
         </div>

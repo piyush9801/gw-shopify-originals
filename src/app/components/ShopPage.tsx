@@ -21,8 +21,8 @@ const SHOP_HERO_DEFAULTS: TuneConfig = {
 
 const NEW_ARRIVALS_HERO_DEFAULTS: TuneConfig = {
   imageIndex: 16,          // 3137
-  cropX: 50,
-  cropY: 35,
+  cropX: 37,
+  cropY: 61,
   swooshEnabled: false,
   swooshTop: 42,
   swooshWidth: 48,
