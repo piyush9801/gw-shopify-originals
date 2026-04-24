@@ -2,10 +2,9 @@
 // To add a new story, append an entry here, drop the tile image into
 // src/assets/brand-shoot/story/, and (optionally) create a full
 // article page — short stories can all share StoryArticle.tsx.
-import storyBreak1 from "../../assets/brand-shoot/story/story-break-1.png";
-import storyNyfw from "../../assets/brand-shoot/story/story-nyfw.png";
-import storyCollab from "../../assets/brand-shoot/story/story-collab.png";
-import { bbagleyStoryHero as heroSunburst } from "./bbagleyImages";
+import brandStudioPortrait from "../../assets/editorial/brand-studio-portrait.png";
+import nyfwRedRunway from "../../assets/editorial/nyfw-red-runway.png";
+import laEditorialGroup from "../../assets/editorial/la-editorial-group.png";
 
 export type Story = {
   slug: string;
@@ -30,7 +29,7 @@ export const stories: Story[] = [
     excerpt:
       "Greenwrld was built around the idea that clothing doesn't need to be newly manufactured to feel new.",
     date: "2024",
-    tile: heroSunburst,
+    tile: brandStudioPortrait,
     kind: "full",
   },
   {
@@ -40,9 +39,9 @@ export const stories: Story[] = [
     excerpt:
       "A ten-look collection walked NYFW — each garment reworked by hand, no two the same.",
     date: "SS 2024",
-    tile: storyNyfw,
+    tile: nyfwRedRunway,
     kind: "article",
-    featureImage: storyNyfw,
+    featureImage: nyfwRedRunway,
     body: [
       "New York Fashion Week has never been about what's new. It's about what's now.",
       "For our first runway, we presented ten reworked looks — hoodies, jackets, and outerwear sourced secondhand and rebuilt by hand. No two pieces shared the same pattern, the same seams, or the same history.",
@@ -57,9 +56,9 @@ export const stories: Story[] = [
     excerpt:
       "A sustainable showcase at Goodwill LA, built around reworked Nike archive pieces and Billie Eilish's vision.",
     date: "Fall 2023",
-    tile: storyCollab,
+    tile: laEditorialGroup,
     kind: "article",
-    featureImage: storyCollab,
+    featureImage: laEditorialGroup,
     body: [
       "Goodwill has been part of our sourcing story since day one. So when the opportunity came to showcase reworked pieces alongside Nike and Billie Eilish — at Goodwill in Los Angeles — it felt like everything converging at once.",
       "We built a capsule from Nike archive outerwear, deconstructing and rebuilding each piece by hand. The activation paired the finished garments with the source materials they came from, side by side.",

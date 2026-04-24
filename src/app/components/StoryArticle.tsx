@@ -106,11 +106,11 @@ export function StoryArticle() {
         </div>
       </section>
 
-      {/* ─── Feature image (collage) with swoosh overlay ─── */}
+      {/* ─── Feature image (editorial) with swoosh overlay ─── */}
       <section className="px-6 lg:px-10 pb-14 lg:pb-20">
         <div className="max-w-[1200px] mx-auto relative max-h-[65vh] overflow-hidden">
           <ImageWithFallback
-            src={bbagley[tune.imageIndex]}
+            src={story.featureImage ?? bbagley[tune.imageIndex]}
             alt={story.title}
             className="block w-full h-full max-h-[65vh] object-cover"
             style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}

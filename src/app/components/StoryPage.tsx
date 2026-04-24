@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Link } from "react-router";
 
@@ -8,8 +8,20 @@ import { bbagley, bbagleyStoryExtras } from "./bbagleyImages";
 /* ─── Torn-paper cutout collage assets (generated via Gemini) ─── */
 import storyBreak1 from "../../assets/brand-shoot/story/story-break-1.png";
 import storyBreak2 from "../../assets/brand-shoot/story/story-break-2.png";
-import { bbagleyStoryHero as heroSunburst } from "./bbagleyImages";
+import brandStudioPortrait from "../../assets/editorial/brand-studio-portrait.png";
 import { HeroSwoosh } from "./HeroSwoosh";
+import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
+
+const STORY_HERO_DEFAULTS: TuneConfig = {
+  imageIndex: 0,           // unused — hero uses fixed editorial image
+  cropX: 50,
+  cropY: 30,
+  swooshEnabled: true,
+  swooshTop: 50,
+  swooshWidth: 40,
+  swooshMaxWidth: 500,
+  swooshOpacity: 85,
+};
 
 // Story-scroll unique slots (no duplicates within this page)
 const imgProduct1 = bbagley[26];
@@ -50,6 +62,7 @@ function Divider({ dark = false }: { dark?: boolean }) {
    Cinematic full-bleed hero, stacked subtitle lines
    ============================================================ */
 function Hero() {
+  const [tune, setTune] = useState(() => loadTune("gw-story-hero-tune", STORY_HERO_DEFAULTS));
   return (
     <section className="relative bg-[#E8E6E0] pt-24 lg:pt-32 pb-12 lg:pb-20 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -69,16 +82,28 @@ function Hero() {
           </div>
         </div>
 
-        {/* Collage with swoosh overlay */}
+        {/* Hero image with swoosh overlay */}
         <div className="relative max-h-[65vh] overflow-hidden">
           <ImageWithFallback
-            src={heroSunburst}
-            alt="Greenwrld reworked garment collage"
+            src={brandStudioPortrait}
+            alt="The Wrld — brand portrait"
             className="block w-full h-full max-h-[65vh] object-cover"
+            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}
           />
-          <HeroSwoosh className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
+          {tune.swooshEnabled && (
+            <HeroSwoosh
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]"
+              style={{
+                top: `${tune.swooshTop}%`,
+                width: `${tune.swooshWidth}vw`,
+                maxWidth: `${tune.swooshMaxWidth}px`,
+                opacity: tune.swooshOpacity / 100,
+              }}
+            />
+          )}
         </div>
       </div>
+      <TunerPanel title="Story Hero (The Wrld)" storageKey="gw-story-hero-tune" supportsSwoosh={true} tune={tune} onChange={setTune} />
     </section>
   );
 }
