@@ -1,15 +1,55 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { stories } from "./stories";
 import { HeroSwoosh } from "./HeroSwoosh";
+import { bbagley } from "./bbagleyImages";
+import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
+
+const ARTICLE_DEFAULTS: Record<string, TuneConfig> = {
+  "nyfw-runway": {
+    imageIndex: 21,          // 3142 — 1989, arm-raised landscape
+    cropX: 50,
+    cropY: 45,
+    swooshEnabled: true,
+    swooshTop: 50,
+    swooshWidth: 40,
+    swooshMaxWidth: 500,
+    swooshOpacity: 85,
+  },
+  "nike-billie-goodwill": {
+    imageIndex: 7,           // 3128 — Noah Kahan crouching
+    cropX: 50,
+    cropY: 45,
+    swooshEnabled: true,
+    swooshTop: 50,
+    swooshWidth: 40,
+    swooshMaxWidth: 500,
+    swooshOpacity: 85,
+  },
+};
+
+const FALLBACK_DEFAULTS: TuneConfig = {
+  imageIndex: 21,
+  cropX: 50,
+  cropY: 45,
+  swooshEnabled: true,
+  swooshTop: 50,
+  swooshWidth: 40,
+  swooshMaxWidth: 500,
+  swooshOpacity: 85,
+};
 
 export function StoryArticle() {
   const { slug } = useParams();
   const story = stories.find((s) => s.slug === slug);
+  const storageKey = `gw-article-${slug}-tune`;
+  const defaults = (slug && ARTICLE_DEFAULTS[slug]) || FALLBACK_DEFAULTS;
+  const [tune, setTune] = useState(() => loadTune(storageKey, defaults));
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTune(loadTune(storageKey, defaults));
   }, [slug]);
 
   if (!story || story.kind !== "article") {
@@ -67,18 +107,34 @@ export function StoryArticle() {
       </section>
 
       {/* ─── Feature image (collage) with swoosh overlay ─── */}
-      {story.featureImage && (
-        <section className="px-6 lg:px-10 pb-14 lg:pb-20">
-          <div className="max-w-[1400px] mx-auto relative">
-            <ImageWithFallback
-              src={story.featureImage}
-              alt={story.title}
-              className="block w-full h-auto"
+      <section className="px-6 lg:px-10 pb-14 lg:pb-20">
+        <div className="max-w-[1200px] mx-auto relative max-h-[65vh] overflow-hidden">
+          <ImageWithFallback
+            src={bbagley[tune.imageIndex]}
+            alt={story.title}
+            className="block w-full h-full max-h-[65vh] object-cover"
+            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}
+          />
+          {tune.swooshEnabled && (
+            <HeroSwoosh
+              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]"
+              style={{
+                top: `${tune.swooshTop}%`,
+                width: `${tune.swooshWidth}vw`,
+                maxWidth: `${tune.swooshMaxWidth}px`,
+                opacity: tune.swooshOpacity / 100,
+              }}
             />
-            <HeroSwoosh className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto opacity-85 drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]" />
-          </div>
-        </section>
-      )}
+          )}
+          <TunerPanel
+            title={`Article: ${story.title}`}
+            storageKey={storageKey}
+            supportsSwoosh={true}
+            tune={tune}
+            onChange={setTune}
+          />
+        </div>
+      </section>
 
       {/* ─── Body ─── */}
       <section className="px-6 pb-24 lg:pb-36">
@@ -113,11 +169,11 @@ export function StoryArticle() {
               }
               className="group block"
             >
-              <div className="relative overflow-hidden max-w-[720px] mx-auto">
+              <div className="relative overflow-hidden max-w-[720px] mx-auto aspect-[4/5]">
                 <ImageWithFallback
                   src={nextStory.tile}
                   alt={nextStory.title}
-                  className="block w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </div>
               <div className="text-center mt-5 lg:mt-7">
