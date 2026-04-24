@@ -5,6 +5,7 @@ export type TuneConfig = {
   imageIndex: number;      // 0-27 → bbagley[imageIndex]
   cropX: number;           // %
   cropY: number;           // %
+  scale?: number;          // 1 = native, >1 = zoom in
   swooshEnabled: boolean;
   swooshTop: number;       // %
   swooshWidth: number;     // vw
@@ -131,6 +132,7 @@ export function TunerPanel({ title, storageKey, supportsSwoosh, supportsImagePic
           <Section label="Crop">
             <Slider label="X" value={tune.cropX} min={0} max={100} step={1} unit="%" onChange={(v) => update("cropX", v)} />
             <Slider label="Y" value={tune.cropY} min={0} max={100} step={1} unit="%" onChange={(v) => update("cropY", v)} />
+            <Slider label="Zoom" value={Math.round((tune.scale ?? 1) * 100)} min={100} max={250} step={5} unit="%" onChange={(v) => update("scale", v / 100)} />
           </Section>
 
           {supportsSwoosh && (

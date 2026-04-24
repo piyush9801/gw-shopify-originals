@@ -12,9 +12,9 @@ function storyHref(slug: string, kind: "full" | "article") {
 }
 
 const CARD_DEFAULTS: Record<string, TuneConfig> = {
-  "the-wrld": { imageIndex: 0, cropX: 50, cropY: 17, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
-  "nyfw-runway": { imageIndex: 0, cropX: 50, cropY: 9, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
-  "nike-billie-goodwill": { imageIndex: 0, cropX: 50, cropY: 19, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
+  "the-wrld": { imageIndex: 0, cropX: 50, cropY: 17, scale: 1.4, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
+  "nyfw-runway": { imageIndex: 0, cropX: 50, cropY: 9, scale: 1, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
+  "nike-billie-goodwill": { imageIndex: 0, cropX: 50, cropY: 19, scale: 1, swooshEnabled: false, swooshTop: 50, swooshWidth: 40, swooshMaxWidth: 500, swooshOpacity: 85 },
 };
 
 // Each card gets its own tuner in a different corner so they don't overlap.
@@ -68,8 +68,8 @@ function BlogCard({ story, tunerPosition }: BlogCardProps) {
           <ImageWithFallback
             src={story.tile}
             alt={story.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}
+            className="w-full h-full object-cover transition-transform duration-500"
+            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%`, transform: `scale(${tune.scale ?? 1})` }}
           />
         </div>
         <p className="font-['Optima',sans-serif] text-[11px] tracking-[3px] uppercase text-[#8B9B7D] mb-2">
