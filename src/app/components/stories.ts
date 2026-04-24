@@ -3,7 +3,7 @@
 // src/assets/brand-shoot/story/, and (optionally) create a full
 // article page — short stories can all share StoryArticle.tsx.
 import brandStudioPortrait from "../../assets/editorial/brand-studio-portrait.png";
-import nyfwRedRunway from "../../assets/editorial/nyfw-red-runway.png";
+import nyfwGreenRunway from "../../assets/editorial/nyfw-green-runway.png";
 import { bbagleyStoryHero } from "./bbagleyImages";
 
 export type Story = {
@@ -39,9 +39,9 @@ export const stories: Story[] = [
     excerpt:
       "A ten-look collection walked NYFW — each garment reworked by hand, no two the same.",
     date: "SS 2024",
-    tile: nyfwRedRunway,
+    tile: nyfwGreenRunway,
     kind: "article",
-    featureImage: nyfwRedRunway,
+    featureImage: nyfwGreenRunway,
     body: [
       "New York Fashion Week has never been about what's new. It's about what's now.",
       "For our first runway, we presented ten reworked looks — hoodies, jackets, and outerwear sourced secondhand and rebuilt by hand. No two pieces shared the same pattern, the same seams, or the same history.",
