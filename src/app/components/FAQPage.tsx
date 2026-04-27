@@ -18,6 +18,7 @@ type Section = {
   title: string;
   body: Block[];
   pendingNote?: string;
+  cta?: { label: string; to: string };
 };
 
 const sections: Section[] = [
@@ -95,10 +96,10 @@ const sections: Section[] = [
     eyebrow: "Get In Touch",
     title: "Contact",
     body: [
-      "The fastest way to reach us is on Instagram — for sizing questions, custom adjustments, drop notifications, or anything else.",
-      "Instagram: @greenwrld",
+      "Send us a message through the contact form — we reply within a couple of days.",
+      "For quick questions about sizing, custom adjustments, or drop notifications, DM @greenwrld on Instagram.",
     ],
-    pendingNote: "Maddy: add an email address here if you'd like one listed alongside Instagram.",
+    cta: { label: "Open Contact Form", to: "/contact" },
   },
 ];
 
@@ -214,6 +215,16 @@ export function FAQPage() {
                 <p className="mt-6 font-['Inter',sans-serif] text-[12px] leading-[1.7] text-[#C46A45]/80 italic">
                   ↳ {s.pendingNote}
                 </p>
+              )}
+              {s.cta && (
+                <div className="mt-7">
+                  <Link
+                    to={s.cta.to}
+                    className="inline-block font-['Optima',sans-serif] text-[12px] tracking-[3px] uppercase text-[#525F47] border-b border-[#525F47] pb-1 hover:text-[#1A1A1A] hover:border-[#1A1A1A] transition-colors"
+                  >
+                    {s.cta.label} →
+                  </Link>
+                </div>
               )}
             </article>
           ))}

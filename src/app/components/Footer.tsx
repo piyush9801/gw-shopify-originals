@@ -87,7 +87,7 @@ export function Footer() {
               { label: "Returns", to: "/faq#returns" },
               { label: "Size Guide", to: "/faq#size-guide" },
               { label: "Care Instructions", to: "/faq#care" },
-              { label: "Contact", to: "/faq#contact" },
+              { label: "Contact", to: "/contact" },
             ].map((item) => (
               <li key={item.label}>
                 <Link to={item.to} className="font-['Inter',sans-serif] text-[14px] text-[#E8E6E0]/80 hover:text-white transition-colors">

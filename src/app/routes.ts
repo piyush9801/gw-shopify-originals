@@ -11,6 +11,7 @@ import { TermsPage } from "./components/TermsPage";
 import { LegalPage } from "./components/LegalPage";
 import { ProductDetailPage } from "./components/ProductDetailPage";
 import { FAQPage } from "./components/FAQPage";
+import { ContactPage } from "./components/ContactPage";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
       { path: "sustainability", Component: SustainabilityPage },
       { path: "product/:slug", Component: ProductDetailPage },
       { path: "faq", Component: FAQPage },
+      { path: "contact", Component: ContactPage },
       { path: "privacy-policy", Component: PrivacyPolicyPage },
       { path: "terms-of-service", Component: TermsPage },
       { path: "legal", Component: LegalPage },
