@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { stories, featuredStory, secondaryStories } from "./stories";
+import { featuredStory, secondaryStories } from "./stories";
+import { GreyPlaceholder } from "./GreyPlaceholder";
 
 function storyHref(slug: string, kind: "full" | "article") {
   return kind === "full" ? "/story" : `/stories/${slug}`;
@@ -32,12 +33,16 @@ export function StoriesPage() {
                 {featuredStory.excerpt}
               </p>
             </div>
-            <div className="relative overflow-hidden max-h-[60vh]">
-              <ImageWithFallback
-                src={featuredStory.tile}
-                alt={featuredStory.title}
-                className="block w-full h-full max-h-[60vh] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
+            <div className="relative overflow-hidden max-h-[60vh] h-[50vh] lg:h-[60vh]">
+              {featuredStory.tile ? (
+                <ImageWithFallback
+                  src={featuredStory.tile}
+                  alt={featuredStory.title}
+                  className="block w-full h-full max-h-[60vh] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              ) : (
+                <GreyPlaceholder label="Image to be provided" />
+              )}
             </div>
             <div className="mt-6 lg:mt-8 text-center">
               <span className="inline-block font-['Optima',sans-serif] text-[12px] tracking-[3px] uppercase text-[#525F47] border-b border-[#525F47] pb-1 group-hover:text-[#1A1A1A] group-hover:border-[#1A1A1A] transition-colors">
@@ -63,12 +68,16 @@ export function StoriesPage() {
                   className="group block"
                 >
                   <div className="relative overflow-hidden aspect-[5/4]">
-                    <ImageWithFallback
-                      src={story.tile}
-                      alt={story.title}
-                      className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                      style={{ objectPosition: story.tileObjectPosition ?? "center" }}
-                    />
+                    {story.tile ? (
+                      <ImageWithFallback
+                        src={story.tile}
+                        alt={story.title}
+                        className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                        style={{ objectPosition: story.tileObjectPosition ?? "center" }}
+                      />
+                    ) : (
+                      <GreyPlaceholder label="Image to be provided" compact />
+                    )}
                   </div>
                   <div className="mt-5 lg:mt-6">
                     <p className="font-['Optima',sans-serif] text-[11px] tracking-[3px] uppercase text-[#525F47]/60 mb-2">

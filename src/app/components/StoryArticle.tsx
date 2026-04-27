@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { stories } from "./stories";
 import { HeroSwoosh } from "./HeroSwoosh";
-import { bbagley } from "./bbagleyImages";
+import { GreyPlaceholder } from "./GreyPlaceholder";
 import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
 const ARTICLE_DEFAULTS: Record<string, TuneConfig> = {
@@ -108,31 +108,37 @@ export function StoryArticle() {
 
       {/* ─── Feature image (editorial) with swoosh overlay ─── */}
       <section className="px-6 lg:px-10 pb-14 lg:pb-20">
-        <div className="max-w-[1200px] mx-auto relative max-h-[65vh] overflow-hidden">
-          <ImageWithFallback
-            src={story.featureImage ?? bbagley[tune.imageIndex]}
-            alt={story.title}
-            className="block w-full h-full max-h-[65vh] object-cover"
-            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}
-          />
-          {tune.swooshEnabled && (
-            <HeroSwoosh
-              className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]"
-              style={{
-                top: `${tune.swooshTop}%`,
-                width: `${tune.swooshWidth}vw`,
-                maxWidth: `${tune.swooshMaxWidth}px`,
-                opacity: tune.swooshOpacity / 100,
-              }}
-            />
+        <div className="max-w-[1200px] mx-auto relative max-h-[65vh] overflow-hidden h-[55vh] lg:h-[65vh]">
+          {story.featureImage ? (
+            <>
+              <ImageWithFallback
+                src={story.featureImage}
+                alt={story.title}
+                className="block w-full h-full max-h-[65vh] object-cover"
+                style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%` }}
+              />
+              {tune.swooshEnabled && (
+                <HeroSwoosh
+                  className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto drop-shadow-[0_4px_16px_rgba(26,26,26,0.25)]"
+                  style={{
+                    top: `${tune.swooshTop}%`,
+                    width: `${tune.swooshWidth}vw`,
+                    maxWidth: `${tune.swooshMaxWidth}px`,
+                    opacity: tune.swooshOpacity / 100,
+                  }}
+                />
+              )}
+              <TunerPanel
+                title={`Article: ${story.title}`}
+                storageKey={storageKey}
+                supportsSwoosh={true}
+                tune={tune}
+                onChange={setTune}
+              />
+            </>
+          ) : (
+            <GreyPlaceholder label="Event imagery to be provided" />
           )}
-          <TunerPanel
-            title={`Article: ${story.title}`}
-            storageKey={storageKey}
-            supportsSwoosh={true}
-            tune={tune}
-            onChange={setTune}
-          />
         </div>
       </section>
 
@@ -155,19 +161,28 @@ export function StoryArticle() {
       </section>
 
       {/* ─── Below image — static, non-clickable ─── */}
-      {(story.belowImage || nextStory) && (
-        <section className="border-t border-[#C4CFC0]/40 py-16 lg:py-24 px-6 lg:px-10">
-          <div className="max-w-[1100px] mx-auto">
-            <div className="relative overflow-hidden max-w-[720px] mx-auto aspect-[4/5]">
-              <ImageWithFallback
-                src={story.belowImage ?? nextStory!.featureImage ?? nextStory!.tile}
-                alt=""
-                className="block w-full h-full object-cover"
-              />
+      {(() => {
+        const belowSrc =
+          story.belowImage ?? nextStory?.featureImage ?? nextStory?.tile;
+        if (!belowSrc && !nextStory) return null;
+        return (
+          <section className="border-t border-[#C4CFC0]/40 py-16 lg:py-24 px-6 lg:px-10">
+            <div className="max-w-[1100px] mx-auto">
+              <div className="relative overflow-hidden max-w-[720px] mx-auto aspect-[4/5]">
+                {belowSrc ? (
+                  <ImageWithFallback
+                    src={belowSrc}
+                    alt=""
+                    className="block w-full h-full object-cover"
+                  />
+                ) : (
+                  <GreyPlaceholder label="Image to be provided" />
+                )}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        );
+      })()}
     </div>
   );
 }

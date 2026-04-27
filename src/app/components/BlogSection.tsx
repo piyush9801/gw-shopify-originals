@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { stories } from "./stories";
+import { GreyPlaceholder } from "./GreyPlaceholder";
 import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
 // Pull from the single source of truth — whatever's in stories.ts shows here.
@@ -65,12 +66,16 @@ function BlogCard({ story, tunerPosition }: BlogCardProps) {
     <div>
       <Link to={storyHref(story.slug, story.kind)} className="group cursor-pointer block">
         <div className="aspect-[4/3] overflow-hidden mb-5">
-          <ImageWithFallback
-            src={story.tile}
-            alt={story.title}
-            className="w-full h-full object-cover transition-transform duration-500"
-            style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%`, transform: `scale(${tune.scale ?? 1})` }}
-          />
+          {story.tile ? (
+            <ImageWithFallback
+              src={story.tile}
+              alt={story.title}
+              className="w-full h-full object-cover transition-transform duration-500"
+              style={{ objectPosition: `${tune.cropX}% ${tune.cropY}%`, transform: `scale(${tune.scale ?? 1})` }}
+            />
+          ) : (
+            <GreyPlaceholder label="Image to be provided" compact />
+          )}
         </div>
         <p className="font-['Optima',sans-serif] text-[11px] tracking-[3px] uppercase text-[#8B9B7D] mb-2">
           {story.chapter} · {story.date}

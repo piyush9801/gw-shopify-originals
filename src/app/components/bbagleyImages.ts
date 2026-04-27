@@ -1,4 +1,4 @@
-// Central registry for the 28 bbagley photography assets — "as-delivered" set.
+// Central registry for the bbagley photography assets — "as-delivered" set.
 import img3121 from "../../assets/bbagley/bbagleyphotography-3121.jpg";
 import img3122 from "../../assets/bbagley/bbagleyphotography-3122.jpg";
 import img3123 from "../../assets/bbagley/bbagleyphotography-3123.jpg";
@@ -28,56 +28,55 @@ import img3146 from "../../assets/bbagley/bbagleyphotography-3146.jpg";
 import img3147 from "../../assets/bbagley/bbagleyphotography-3147.jpg";
 import img3148 from "../../assets/bbagley/bbagleyphotography-3148.jpg";
 
+// New Brenna-edited shot (lavender Adidas sweatshirt, Tetons backdrop) — used as Shop hero.
+import img4247 from "../../assets/bbagley/bbagleyphotography-4247.jpg";
+
 export const bbagley: string[] = [
   img3121, img3122, img3123, img3124, img3125, img3126, img3127,
   img3128, img3129, img3130, img3131, img3132, img3133, img3134,
   img3135, img3136, img3137, img3138, img3139, img3140, img3141,
   img3142, img3143, img3144, img3145, img3146, img3147, img3148,
+  // index 28 — Brenna-edited Tetons shot, used as Shop hero
+  img4247,
 ];
 
-// ─── Allocation plan (client feedback, 2026-04-24) ───
-// Chosen FRONT:          3142 [21] — landscape, 1989 sweatshirt, dynamic pose
-// Re-emphasized (prime): 3127 [6], 3137 [16], 3141 [20]
-// Small-picture callout: 3146 [25]
-// Non-chosen fronts highlighted elsewhere: 3122 [1], 3128 [7], 3145 [24]
-// Photo index = (photo number - 3121). e.g. 3142 → bbagley[21].
+// ─── Allocation plan (rebalanced 2026-04-27 per Maddy's feedback) ───
+// Each photo appears at most twice across the front-line user flow
+// (hero / banner / tile / editorial). Galleries and product detail
+// pages may reuse photos — those are drill-down views.
 
 // Home page
-export const bbagleyHero = bbagley[21];          // 3142 — front-page hero
+export const bbagleyHero = bbagley[21];           // 3142 — Home Hero (only here)
 export const bbagleyBestSellers = [
-  bbagley[1], bbagley[7], bbagley[24], bbagley[20], // 3122, 3128, 3145, 3141
+  bbagley[1], bbagley[7], bbagley[5], bbagley[18], // 3122, 3128, 3126, 3139
 ];
 export const bbagleyMediaGrid = [
-  bbagley[6], bbagley[16], bbagley[25],             // 3127, 3137, 3146
+  bbagley[6], bbagley[16], bbagley[25],            // 3127, 3137, 3146
 ];
-export const bbagleyCollab = bbagley[19];        // 3140
-export const bbagleyBlog = [
-  bbagley[6], bbagley[16], bbagley[20],             // 3127, 3137, 3141
-];
+export const bbagleyCollab = bbagley[19];          // 3140
 
 // Shop page
-export const bbagleyShopHero = bbagley[24];      // 3145
-export const bbagleyProducts = [
-  bbagley[5], bbagley[9], bbagley[14], bbagley[18], bbagley[23], bbagley[27],
-];
+export const bbagleyShopHero = bbagley[28];        // 4247 — NEW Brenna-edited Tetons shot
+export const bbagleyShopHeroIndex = 28;
 export const bbagleyInstagram = [
-  bbagley[3], bbagley[7], bbagley[25], bbagley[16], bbagley[22],  // incl. 3128
+  bbagley[3], bbagley[10], bbagley[15], bbagley[22], bbagley[27],
 ];
 
-// Story page
-export const bbagleyStoryHero = bbagley[20];     // 3141
+// Story page (The Wrld)
+export const bbagleyStoryHero = bbagley[20];       // 3141 — also used as the Wrld blog tile
+export const bbagleyStoryProduct = bbagley[26];    // 3147 — Beginning section
 export const bbagleyStoryExtras = [
-  bbagley[6], bbagley[16], bbagley[25],             // 3127, 3137, 3146
+  bbagley[17], bbagley[0], bbagley[8],             // 3138, 3121, 3129 — process steps
 ];
 
 // Sustainability
-export const bbagleyParka = bbagley[7];          // 3128
 export const bbagleySustain = [
-  bbagley[1], bbagley[12], bbagley[19], bbagley[11], bbagley[24],
+  bbagley[12], bbagley[23], bbagley[4], bbagley[11], bbagley[9],
+  // 3133, 3144, 3125, 3132, 3130 — image breaks (only first 4 are rendered)
 ];
 
-// Product detail galleries — 4 visually distinct photos per product
-// Each gallery pulls from spread-out indices to avoid burst duplicates.
+// Product detail galleries — 4 visually distinct photos per product.
+// These are drill-down views, so reuse with front-line is acceptable.
 export const bbagleyGalleries: string[][] = [
   [bbagley[5],  bbagley[2],  bbagley[16], bbagley[22]],  // Midnights
   [bbagley[9],  bbagley[26], bbagley[13], bbagley[1]],   // 1989

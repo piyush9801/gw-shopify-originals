@@ -63,13 +63,16 @@ export function Footer() {
                 Sustainability
               </Link>
             </li>
-            {["FAQ"].map((item) => (
-              <li key={item}>
-                <a href="#" className="font-['Inter',sans-serif] text-[14px] text-[#E8E6E0]/80 hover:text-white transition-colors">
-                  {item}
-                </a>
-              </li>
-            ))}
+            <li>
+              <Link to="/faq#how-it-works" className="font-['Inter',sans-serif] text-[14px] text-[#E8E6E0]/80 hover:text-white transition-colors">
+                How It Works
+              </Link>
+            </li>
+            <li>
+              <Link to="/faq" className="font-['Inter',sans-serif] text-[14px] text-[#E8E6E0]/80 hover:text-white transition-colors">
+                FAQ
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -79,11 +82,17 @@ export function Footer() {
             Support
           </h4>
           <ul className="space-y-2">
-            {["Shipping", "Returns", "Size Guide", "Care Instructions", "Contact"].map((item) => (
-              <li key={item}>
-                <a href="#" className="font-['Inter',sans-serif] text-[14px] text-[#E8E6E0]/80 hover:text-white transition-colors">
-                  {item}
-                </a>
+            {[
+              { label: "Shipping", to: "/faq#shipping" },
+              { label: "Returns", to: "/faq#returns" },
+              { label: "Size Guide", to: "/faq#size-guide" },
+              { label: "Care Instructions", to: "/faq#care" },
+              { label: "Contact", to: "/faq#contact" },
+            ].map((item) => (
+              <li key={item.label}>
+                <Link to={item.to} className="font-['Inter',sans-serif] text-[14px] text-[#E8E6E0]/80 hover:text-white transition-colors">
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>

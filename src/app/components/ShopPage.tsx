@@ -9,20 +9,20 @@ import { HeroSwoosh } from "./HeroSwoosh";
 import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
 const SHOP_HERO_DEFAULTS: TuneConfig = {
-  imageIndex: 24,          // 3145
+  imageIndex: 28,          // 4247 — Brenna-edited Tetons shot (new)
   cropX: 50,
-  cropY: 56,
-  swooshEnabled: true,
+  cropY: 50,
+  swooshEnabled: false,
   swooshTop: 42,
-  swooshWidth: 60,
-  swooshMaxWidth: 530,
-  swooshOpacity: 90,
+  swooshWidth: 36,
+  swooshMaxWidth: 420,
+  swooshOpacity: 80,
 };
 
 const NEW_ARRIVALS_HERO_DEFAULTS: TuneConfig = {
-  imageIndex: 16,          // 3137
-  cropX: 37,
-  cropY: 61,
+  imageIndex: 24,          // 3145 — moved off 3137 (used in MediaGrid)
+  cropX: 50,
+  cropY: 56,
   swooshEnabled: false,
   swooshTop: 42,
   swooshWidth: 48,

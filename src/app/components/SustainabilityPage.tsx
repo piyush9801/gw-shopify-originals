@@ -2,18 +2,15 @@ import { useEffect, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Link } from "react-router";
 
-/* ─── bbagley photography set ─── */
 import { bbagley, bbagleySustain } from "./bbagleyImages";
-
-/* ─── brand-shoot imagery ─── */
-import sustainChoosing from "../../assets/brand-shoot/sustain-choosing-v4.png";
+import { GreyPlaceholder } from "./GreyPlaceholder";
 import { HeroSwoosh } from "./HeroSwoosh";
 import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
 const SUSTAIN_HERO_DEFAULTS: TuneConfig = {
-  imageIndex: 21,          // 3142
-  cropX: 46,
-  cropY: 76,
+  imageIndex: 24,          // 3145 — moved off 3142 (Home Hero)
+  cropX: 50,
+  cropY: 56,
   swooshEnabled: true,
   swooshTop: 40,
   swooshWidth: 36,
@@ -32,13 +29,10 @@ const SUSTAIN_REWORKING_DEFAULTS: TuneConfig = {
   swooshOpacity: 85,
 };
 
-// Mix: documentary originals for authenticity (problem/craft beats),
-// painted-mural treated for aspirational beats (method / choosing better).
-const imgLeaves = bbagleySustain[0];            // original — nature break
-const imgWaste = bbagleySustain[1];             // original — fast-fashion problem
-const imgArtisan = bbagleySustain[2];           // original — hands / craft break
-const imgCotton = bbagleySustain[3];            // original — raw materials break
-const imgEarthTones = sustainChoosing;          // treated — painted dusk-earth halo
+const imgLeaves = bbagleySustain[0];
+const imgWaste = bbagleySustain[1];
+const imgArtisan = bbagleySustain[2];
+const imgCotton = bbagleySustain[3];
 
 /* ─── Full-bleed image break ─── */
 function ImageBreak({ src, alt }: { src: string; alt: string }) {
@@ -287,11 +281,7 @@ function ChoosingBetter() {
       <div className="max-w-[1440px] mx-auto flex flex-col-reverse lg:flex-row">
         {/* Left — image */}
         <div className="w-full lg:w-[45%] h-[360px] lg:h-auto lg:min-h-[560px] overflow-hidden">
-          <ImageWithFallback
-            src={imgEarthTones}
-            alt="Choosing sustainable clothing"
-            className="w-full h-full object-cover"
-          />
+          <GreyPlaceholder label="Image to be provided" />
         </div>
 
         {/* Right — text */}

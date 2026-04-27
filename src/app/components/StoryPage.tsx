@@ -2,13 +2,8 @@ import { useEffect, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Link } from "react-router";
 
-/* ─── bbagley photography set ─── */
-import { bbagley, bbagleyStoryExtras } from "./bbagleyImages";
-
-/* ─── Torn-paper cutout collage assets (generated via Gemini) ─── */
-import storyBreak1 from "../../assets/brand-shoot/story/story-break-1.png";
-import storyBreak2 from "../../assets/brand-shoot/story/story-break-2.png";
-import { bbagleyStoryHero } from "./bbagleyImages";
+import { bbagleyStoryHero, bbagleyStoryProduct, bbagleyStoryExtras } from "./bbagleyImages";
+import { GreyPlaceholder } from "./GreyPlaceholder";
 import { HeroSwoosh } from "./HeroSwoosh";
 import { TunerPanel, loadTune, type TuneConfig } from "./TunerPanel";
 
@@ -23,26 +18,16 @@ const STORY_HERO_DEFAULTS: TuneConfig = {
   swooshOpacity: 85,
 };
 
-// Story-scroll unique slots (no duplicates within this page)
-const imgProduct1 = bbagley[26];
-
+const imgProduct1 = bbagleyStoryProduct;
 const imgDeconstructed = bbagleyStoryExtras[0];
 const imgThriftPile = bbagleyStoryExtras[1];
 const imgStitching = bbagleyStoryExtras[2];
 
-/* ─── Torn-paper cutout break ───
-   Uses a pre-rendered torn-paper collage PNG (generated via Gemini,
-   same technique as MediaGrid v5 tiles). Photo already has the torn
-   edges, soft shadow and cream backdrop baked in. */
-function TornBreak({ src, alt }: { src: string; alt: string }) {
+function PlaceholderBreak({ label }: { label: string }) {
   return (
     <section className="bg-[#E8E6E0] overflow-hidden">
-      <div className="max-w-[1400px] mx-auto max-h-[60vh]">
-        <ImageWithFallback
-          src={src}
-          alt={alt}
-          className="block w-full h-full max-h-[60vh] object-cover"
-        />
+      <div className="max-w-[1400px] mx-auto h-[40vh] lg:h-[55vh]">
+        <GreyPlaceholder label={label} />
       </div>
     </section>
   );
@@ -421,8 +406,7 @@ export function StoryPage() {
       {/* 2. Intro statement */}
       <Intro />
 
-      {/* Torn-paper cutout break */}
-      <TornBreak src={storyBreak1} alt="Reworked garment cutout" />
+      <PlaceholderBreak label="Behind-the-scenes imagery to be added" />
 
       {/* 3. The Beginning */}
       <TheBeginning />

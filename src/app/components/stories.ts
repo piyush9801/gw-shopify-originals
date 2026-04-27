@@ -1,11 +1,6 @@
 // Central registry for story/journal articles.
-// To add a new story, append an entry here, drop the tile image into
-// src/assets/brand-shoot/story/, and (optionally) create a full
-// article page — short stories can all share StoryArticle.tsx.
-import brandStudioPortrait from "../../assets/editorial/brand-studio-portrait.png";
-import nyfwGreenRunway from "../../assets/editorial/nyfw-green-runway.png";
-import nyfwRedRunway from "../../assets/editorial/nyfw-red-runway.png";
-import laEditorialGroup from "../../assets/editorial/la-editorial-group.png";
+// Stories without an explicit tile/featureImage/belowImage render a neutral
+// grey placeholder — used while Maddy provides correct event photography.
 import { bbagleyStoryHero } from "./bbagleyImages";
 
 export type Story = {
@@ -14,7 +9,8 @@ export type Story = {
   chapter: string;
   excerpt: string;
   date: string;
-  tile: string;
+  // Optional — when omitted, components render a neutral grey placeholder.
+  tile?: string;
   // CSS object-position for the tile image (e.g. "50% 20%"). Defaults to "center".
   tileObjectPosition?: string;
   // "full" → dedicated page at /story (existing),
@@ -24,7 +20,6 @@ export type Story = {
   body?: string[];
   featureImage?: string;
   // Static image shown at the bottom of the article (non-clickable).
-  // Defaults to the next story's featureImage/tile if omitted.
   belowImage?: string;
 };
 
@@ -38,7 +33,6 @@ export const stories: Story[] = [
     date: "2024",
     tile: bbagleyStoryHero,
     kind: "full",
-    featureImage: brandStudioPortrait,
   },
   {
     slug: "nyfw-runway",
@@ -47,14 +41,13 @@ export const stories: Story[] = [
     excerpt:
       "A ten-look collection walked NYFW — each garment reworked by hand, no two the same.",
     date: "SS 2024",
-    tile: nyfwGreenRunway,
+    // tile/featureImage/belowImage intentionally omitted — pending Maddy's
+    // event photography. Components render a grey placeholder.
     kind: "article",
-    featureImage: nyfwGreenRunway,
-    belowImage: nyfwRedRunway,
     body: [
       "New York Fashion Week has never been about what's new. It's about what's now.",
       "For our first runway, we presented ten reworked looks — hoodies, jackets, and outerwear sourced secondhand and rebuilt by hand. No two pieces shared the same pattern, the same seams, or the same history.",
-      "The brief was simple: show that slow fashion can hold its own on a runway. The collection closed with a reworked parka assembled from four separate source garments — the heaviest piece we've ever built.",
+      "The brief was simple: show that slow fashion can hold its own on a runway.",
       "Stanley partnered with us on the post-show activation, reinforcing that sustainability isn't a side story — it's the center.",
     ],
   },
@@ -65,10 +58,8 @@ export const stories: Story[] = [
     excerpt:
       "A sustainable showcase at Goodwill LA, built around reworked Nike archive pieces and Billie Eilish's vision.",
     date: "Fall 2023",
-    tile: brandStudioPortrait,
-    tileObjectPosition: "50% 15%",
+    // tile/featureImage intentionally omitted — pending correct event imagery.
     kind: "article",
-    featureImage: laEditorialGroup,
     body: [
       "Goodwill has been part of our sourcing story since day one. So when the opportunity came to showcase reworked pieces alongside Nike and Billie Eilish — at Goodwill in Los Angeles — it felt like everything converging at once.",
       "We built a capsule from Nike archive outerwear, deconstructing and rebuilding each piece by hand. The activation paired the finished garments with the source materials they came from, side by side.",

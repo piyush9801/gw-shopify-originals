@@ -10,6 +10,7 @@ import { PrivacyPolicyPage } from "./components/PrivacyPolicyPage";
 import { TermsPage } from "./components/TermsPage";
 import { LegalPage } from "./components/LegalPage";
 import { ProductDetailPage } from "./components/ProductDetailPage";
+import { FAQPage } from "./components/FAQPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
       { path: "stories/:slug", Component: StoryArticle },
       { path: "sustainability", Component: SustainabilityPage },
       { path: "product/:slug", Component: ProductDetailPage },
+      { path: "faq", Component: FAQPage },
       { path: "privacy-policy", Component: PrivacyPolicyPage },
       { path: "terms-of-service", Component: TermsPage },
       { path: "legal", Component: LegalPage },
